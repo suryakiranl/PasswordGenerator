@@ -97,17 +97,18 @@ public class RandomPasswordGenerator {
 	 */
 	private List<String> getAllowedCharacterTypes() {
 		List<String> allowedTypes = new ArrayList<String>();
+		
 		if(pp.hasLowerCase()) {
 			allowedTypes.add(LOWER_CASE);
-		}
-		if(pp.hasUpperCase()) {
-			allowedTypes.add(UPPER_CASE);
 		}
 		if(pp.hasNumbers()) {
 			allowedTypes.add(NUMBERS);
 		}
 		if(pp.hasSpecialCharacters()) {
 			allowedTypes.add(SPECIAL_CHARACTERS);
+		}
+		if(pp.hasUpperCase()) {
+			allowedTypes.add(UPPER_CASE);
 		}
 		
 		return allowedTypes;
@@ -124,10 +125,10 @@ public class RandomPasswordGenerator {
 	 * @return - A number with in the range.
 	 */
 	private int getRandomNumber(int lowerLimit, int upperLimit) {
-		long currTime = new Date().getTime();
-		Random r = new Random(currTime);
+		Random r = new Random();
 		int rNum = lowerLimit + r.nextInt(upperLimit - lowerLimit);
 
+		long currTime = new Date().getTime();
 		if (currTime % 10 == 0) {
 			rNum++;
 		}
